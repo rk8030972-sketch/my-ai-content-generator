@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Content Idea Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; text-align:center; }
+header { background:#3A6F7D; color:white; padding:20px 0; }
+.container { max-width:600px; margin:40px auto; background:white; padding:20px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+input, select { width:80%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ccc; }
+button { background:#FF6B00; color:white; border:none; padding:12px 20px; border-radius:5px; cursor:pointer; font-size:16px; }
+button:hover { background:#e65c00; }
+#output { margin-top:20px; text-align:left; background:#f9f9f9; padding:15px; border-radius:5px; min-height:50px; }
+.copy-btn { background:#3A6F7D; color:white; padding:5px 10px; margin-top:10px; border:none; border-radius:5px; cursor:pointer; }
+.copy-btn:hover { background:#2e575f; }
+</style>
+</head>
+<body>
+<header>
+<h1>AI Content Idea Generator</h1>
+</header>
+<div class="container">
+<select id="platform">
+<option value="Instagram">Instagram</option>
+<option value="YouTube">YouTube</option>
+<option value="LinkedIn">LinkedIn</option>
+<option value="Twitter">Twitter</option>
+</select>
+<input type="text" id="niche" placeholder="Enter Content Niche (e.g., Fitness, Motivation)">
+<button onclick="generate()">Get Ideas</button>
+<div id="output"></div>
+<button class="copy-btn" onclick="copyOutput()">Copy Suggestions</button>
+</div>
+<script>
+function generate() {
+    const platform = document.getElementById('platform').value;
+    const niche = document.getElementById('niche').value;
+    const output = document.getElementById('output');
+
+    if(!niche) { output.innerText = 'Please enter a niche.'; return; }
+
+    // Placeholder AI output (replace with API integration later)
+    const suggestions = `Platform: ${platform}\nNiche: ${niche}\n\n1. Create a trending post based on latest trends in ${niche}.\n2. Make a carousel highlighting key tips in ${niche}.\n3. Record a short video explaining a unique idea in ${niche}.\n4. Share a motivational story or case study related to ${niche}.\n5. Engage audience with polls or questions about ${niche}.`;
+
+    output.innerText = suggestions;
+}
+
+function copyOutput() {
+    const output = document.getElementById('output');
+    navigator.clipboard.writeText(output.innerText).then(()=>{
+        alert('Suggestions copied!');
+    });
+}
+</script>
+</body>
+</html>
